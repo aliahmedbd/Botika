@@ -15,7 +15,7 @@ import com.squareup.picasso.Target;
 
 import botika.aliahmed.com.botika.R;
 
-public class NavActivity extends AppCompatActivity {
+public class NavActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
     private LinearLayout mDrawer;
     private ActionBarDrawerToggle mDrawerToggle;

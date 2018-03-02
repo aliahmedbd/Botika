@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8sp"
+    android:gravity="left"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="25sp"
+        android:layout_marginRight="8sp"
+        android:layout_height="25sp">
+
+        <botika.aliahmed.com.botika.utility.RoundedImageView
+            android:id="@+id/imgSenderImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/facebook" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="80sp"
+        >
+
+        <TextView
+            android:id="@+id/txtChatText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_rectangle_with_border"
+            android:gravity="left"
+            android:padding="8sp"
+            android:text="Hello gggggggg gggggg ggggg gggggge you?" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
