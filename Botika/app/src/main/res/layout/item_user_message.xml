@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:layout_width="25sp"
-        android:layout_marginRight="8sp"
-        android:layout_height="25sp">
+        android:layout_height="25sp"
+        android:layout_marginRight="8sp">
 
         <botika.aliahmed.com.botika.utility.RoundedImageView
             android:id="@+id/imgSenderImage"
@@ -22,17 +22,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="80sp"
-        >
+        android:layout_marginRight="80sp">
 
         <TextView
             android:id="@+id/txtChatText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_rectangle_with_border"
+            android:background="@drawable/rount_rectangle_yellow"
+            android:fontFamily="@font/quicksandregular"
             android:gravity="left"
             android:padding="8sp"
-            android:text="Hello gggggggg gggggg ggggg gggggge you?" />
+            android:text="Hello gggggggg gggggg ggggg gggggge you?"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

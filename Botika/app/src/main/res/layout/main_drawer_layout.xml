@@ -20,6 +20,11 @@
             android:orientation="vertical">
 
 
+            <botika.aliahmed.com.botika.utility.RoundedImageView
+                android:layout_width="80sp"
+                android:layout_height="80sp"
+                android:src="@drawable/facebook" />
+
 
         </LinearLayout>
     </ScrollView>

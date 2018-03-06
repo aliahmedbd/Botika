@@ -29,6 +29,7 @@
             android:text="BO"
             android:textColor="@color/black"
             android:textScaleX="3"
+            android:fontFamily="@font/quicksandregular"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -38,6 +39,7 @@
             android:text="TIkA"
             android:textColor="@color/black"
             android:textScaleX="1.9"
+            android:fontFamily="@font/quicksandregular"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -58,6 +60,7 @@
             android:layout_height="45sp"
             android:layout_marginLeft="32sp"
             android:layout_marginRight="32sp"
+            android:fontFamily="@font/quicksandregular"
             android:background="@drawable/round_rectangle_with_border"
             android:padding="8sp" />
 
@@ -67,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="45sp"
             android:layout_marginLeft="32sp"
+            android:fontFamily="@font/quicksandregular"
             android:layout_marginRight="32sp"
             android:layout_marginTop="8sp"
             android:background="@drawable/round_rectangle_with_border"
@@ -80,6 +84,7 @@
             android:layout_marginTop="16sp"
             android:layout_marginLeft="86sp"
             android:layout_marginRight="86sp"
+            android:fontFamily="@font/quicksandregular"
             android:background="@drawable/round_rectangle"
             android:backgroundTint="@color/black"
             android:text="Log in"
@@ -91,6 +96,7 @@
             android:gravity="center"
             android:padding="6sp"
             android:layout_marginTop="12sp"
+            android:fontFamily="@font/quicksandregular"
             android:text="@string/sign_up"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
@@ -111,7 +117,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
+            android:fontFamily="@font/quicksandregular"
             android:gravity="center"
+            android:textColor="@color/colorPrimaryLight"
             android:padding="6sp"
             android:text="Or, you can sign with"
             android:textSize="14sp" />

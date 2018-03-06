@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8sp"
+    android:gravity="end"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8sp"
+        android:layout_marginLeft="80sp"
+        android:layout_marginRight="8sp"
+
+        android:layout_marginStart="80sp"
+        android:background="@drawable/round_rectangle_with_border"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtChoiceHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/quicksandregular"
+            android:padding="8sp"
+            android:text="Let me help find your next look"
+            android:textColor="@color/pure_black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvBotOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="30sp"
+        android:layout_height="30sp">
+
+        <botika.aliahmed.com.botika.utility.RoundedImageView
+            android:id="@+id/imgSenderImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/facebook" />
+
+    </LinearLayout>
 
 </LinearLayout>

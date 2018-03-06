@@ -22,6 +22,7 @@
             android:background="@drawable/round_rectangle_with_border"
             android:gravity="right"
             android:padding="8sp"
+            android:fontFamily="@font/quicksandregular"
             android:text="Hello gggggggg gggggffffffffffffffffffffg ggggg gggggge you?" />
 
     </LinearLayout>

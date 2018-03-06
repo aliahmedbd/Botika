@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="botika.aliahmed.com.botika">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".common.BotikaAppController"
         android:allowBackup="true"
@@ -30,7 +35,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".common.BaseActivity" />
         <activity android:name=".common.NavActivity" />
-        <activity android:name=".activities.ChatMainActivity"></activity>
+        <activity
+            android:name=".activities.ChatMainActivity"
+            android:parentActivityName=".activities.LoginActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

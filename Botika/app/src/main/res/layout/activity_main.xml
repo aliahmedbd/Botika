@@ -17,7 +17,8 @@
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -29,8 +30,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:fontFamily="@font/quicksandregular"
                     android:gravity="center"
-                    android:text="HOME"
+                    android:text="BOTiKA"
                     android:textColor="@color/white"
                     android:textSize="19sp"
                     android:textStyle="bold" />
