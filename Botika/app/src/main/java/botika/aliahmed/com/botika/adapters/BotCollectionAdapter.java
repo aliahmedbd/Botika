@@ -14,10 +14,13 @@ import botika.aliahmed.com.botika.R;
 
 public class BotCollectionAdapter extends BaseQuickAdapter<Integer> {
     List<String> headers = Arrays.asList("How about this? It will really suit your tall build and dark complexion");
+    boolean isVisible;
 
 
-    public BotCollectionAdapter(List<Integer> data) {
+    public BotCollectionAdapter(List<Integer> data, boolean isOptionVisiblr, List<String> headers) {
         super(R.layout.item_collection_single_layout, data);
+        this.isVisible = isOptionVisiblr;
+        this.headers = headers;
     }
 
 
@@ -25,6 +28,10 @@ public class BotCollectionAdapter extends BaseQuickAdapter<Integer> {
     protected void convert(BaseViewHolder helper, Integer item) {
         helper.setImageResource(R.id.imgCollection, item)
                 .setText(R.id.txtCollectionHeader, headers.get(0));
+
+        if (isVisible == true) {
+            helper.setVisible(R.id.layoutOptions, false);
+        }
     }
 }
 

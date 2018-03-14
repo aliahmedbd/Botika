@@ -19,13 +19,79 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal"
+                android:paddingBottom="16sp"
+                android:paddingLeft="16sp"
+                android:paddingTop="44sp">
 
-            <botika.aliahmed.com.botika.utility.RoundedImageView
-                android:layout_width="80sp"
-                android:layout_height="80sp"
-                android:src="@drawable/facebook" />
+
+                <botika.aliahmed.com.botika.utility.RoundedImageView
+                    android:id="@+id/imUserPhoto"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    android:src="@drawable/girl" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16sp"
+                    android:gravity="bottom">
+
+                    <TextView
+                        android:id="@+id/txtUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksandregular"
+                        android:text="Ali Ahmed"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutLogOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgLogOut"
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/log_out" />
+
+                <TextView
+                    android:id="@+id/txtLogOUt"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/quicksandregular"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="40dp"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="40dp"
+                    android:paddingStart="0dp"
+                    android:text="LOGOUT"
+                    android:textColor="@color/pure_black" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
+
+
     </ScrollView>
 </LinearLayout>

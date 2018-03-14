@@ -13,10 +13,12 @@ public class ChatMessageModel {
     private int type;
     private String userPhoto;
     private String botChoiceHeading;
-    private List<String> botOptions;
+    private List<BootChoiceModel> botOptions;
     private List<Integer> photoLink;
     private Bitmap userUploadedPhoto;
-
+    private boolean isOptionVisible;
+    private List<String> headersCollections;
+    private boolean isEnabled;
 
     public void setMessageString(String messageString) {
         this.messageString = messageString;
@@ -34,7 +36,7 @@ public class ChatMessageModel {
         this.type = type;
     }
 
-    public List<String> getBotOptions() {
+    public List<BootChoiceModel> getBotOptions() {
         return botOptions;
     }
 
@@ -46,7 +48,7 @@ public class ChatMessageModel {
         return userPhoto;
     }
 
-    public void setBotOptions(List<String> botOptions) {
+    public void setBotOptions(List<BootChoiceModel> botOptions) {
         this.botOptions = botOptions;
     }
 
@@ -72,5 +74,29 @@ public class ChatMessageModel {
 
     public void setUserUploadedPhoto(Bitmap userUploadedPhoto) {
         this.userUploadedPhoto = userUploadedPhoto;
+    }
+
+    public boolean isOptionVisible() {
+        return isOptionVisible;
+    }
+
+    public void setOptionVisible(boolean optionVisible) {
+        isOptionVisible = optionVisible;
+    }
+
+    public List<String> getHeadersCollections() {
+        return headersCollections;
+    }
+
+    public void setHeadersCollections(List<String> headersCollections) {
+        this.headersCollections = headersCollections;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }

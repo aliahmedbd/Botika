@@ -8,4 +8,5 @@ import android.view.View;
 
 public interface ChatMessageClickListener {
     void onClick(View view, int position);
+    void onClick(View view, int position, int choicePosition);
 }

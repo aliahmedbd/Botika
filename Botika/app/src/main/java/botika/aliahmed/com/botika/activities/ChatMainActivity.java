@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import botika.aliahmed.com.botika.interfaces.ChatMessageClickListener;
 import botika.aliahmed.com.botika.model.ChatMessageModel;
 import botika.aliahmed.com.botika.utility.DummyData;
 import botika.aliahmed.com.botika.utility.ImagePicker;
+import botika.aliahmed.com.botika.utility.Utilities;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -50,12 +52,16 @@ public class ChatMainActivity extends AppCompatActivity implements ChatMessageCl
     @BindView(R.id.upload_image)
     ImageView upload_image;
 
+    private boolean isScript1 = true;
+    private boolean isClickedScript2 = true;
+
     List<ChatMessageModel> chatMessageModels = new ArrayList<>();
     ChatMessageAdapter chatMessageAdapter;
     List<String> botChoices = new ArrayList<>();
     List<Integer> botCollections = new ArrayList<>();
 
     List<ChatMessageModel> chatMessageModelScript1 = new ArrayList<>();
+    List<ChatMessageModel> chatMessageModelScript2 = new ArrayList<>();
     int count;
     private Bitmap bmp;
 
@@ -72,7 +78,11 @@ public class ChatMainActivity extends AppCompatActivity implements ChatMessageCl
     }
 
     private void setInitialization() {
-        chatMessageModelScript1 = DummyData.getDummySriptOne();
+        DummyData dummyData = new DummyData();
+        chatMessageModelScript2.clear();
+        chatMessageModelScript1.clear();
+        chatMessageModelScript1 = dummyData.getDummySriptOne();
+        chatMessageModelScript2 = dummyData.getScript2();
     }
 
     public void setToolbar() {
@@ -100,9 +110,13 @@ public class ChatMainActivity extends AppCompatActivity implements ChatMessageCl
         upload_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createCameraPermission();
-                Intent chooseImageIntent = ImagePicker.getPickImageIntent(ChatMainActivity.this);
-                startActivityForResult(chooseImageIntent, PICK_IMAGE_ID);
+                try {
+                    createCameraPermission();
+                    Intent chooseImageIntent = ImagePicker.getPickImageIntent(ChatMainActivity.this);
+                    startActivityForResult(chooseImageIntent, PICK_IMAGE_ID);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -136,11 +150,44 @@ public class ChatMainActivity extends AppCompatActivity implements ChatMessageCl
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                chatMessageModels.add(0, chatMessageModelScript1.get(++count));
-                chatMessageAdapter.notifyDataSetChanged();
+                try {
+                    chatMessageModels.add(0, chatMessageModelScript1.get(++count));
+                    chatMessageAdapter.notifyDataSetChanged();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }, 1000);
+        }, 500);
 
+    }
+
+    @Override
+    public void onClick(View view, int position, final int choicePosition) {
+        if (isScript1) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if (count == 1 && isScript1) {
+                            count = -1;
+                            chatMessageModelScript1.clear();
+                            chatMessageModelScript1.addAll(chatMessageModelScript2);
+                            chatMessageModels.add(0, chatMessageModelScript1.get(++count));
+                            chatMessageAdapter.notifyDataSetChanged();
+                            isScript1 = false;
+                        } else {
+                            chatMessageModels.add(0, chatMessageModelScript1.get(++count));
+                            chatMessageAdapter.notifyDataSetChanged();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, 500);
+        } else {
+            onClick(view, position);
+        }
     }
 
     @Override
@@ -148,13 +195,20 @@ public class ChatMainActivity extends AppCompatActivity implements ChatMessageCl
         switch (requestCode) {
             case PICK_IMAGE_ID:
                 if (resultCode == RESULT_OK) {
-                    bmp = ImagePicker.getImageFromResult(this, resultCode, data);
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    if (data == null) {
+                    try {
                         bmp = ImagePicker.getImageFromResult(this, resultCode, data);
-                        Uri uri = Uri.parse(Prefs.getString("cameraUri", ""));
-                    } else {
-                        // wait....
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        if (data == null) {
+                            bmp = ImagePicker.getImageFromResult(this, resultCode, data);
+                            Uri uri = Uri.parse(Prefs.getString("cameraUri", ""));
+                            if (bmp == null) {
+                                bmp = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                            }
+                        } else {
+                            // wait....
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
 
                     ChatMessageModel chatMessageModel = new ChatMessageModel();
@@ -162,6 +216,20 @@ public class ChatMainActivity extends AppCompatActivity implements ChatMessageCl
                     chatMessageModel.setUserUploadedPhoto(bmp);
                     chatMessageModels.add(0, chatMessageModel);
                     chatMessageAdapter.notifyDataSetChanged();
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                chatMessageModels.add(0, chatMessageModelScript1.get(++count));
+                                chatMessageAdapter.notifyDataSetChanged();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, 500);
+
 
                 }
                 break;

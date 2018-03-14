@@ -19,10 +19,12 @@
             android:id="@+id/txtChatText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autoLink="all"
             android:background="@drawable/round_rectangle_with_border"
-            android:gravity="right"
-            android:padding="8sp"
             android:fontFamily="@font/quicksandregular"
+            android:gravity="right"
+            android:textColor="@color/pure_black"
+            android:padding="8sp"
             android:text="Hello gggggggg gggggffffffffffffffffffffg ggggg gggggge you?" />
 
     </LinearLayout>

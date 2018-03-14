@@ -26,20 +26,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-8sp"
+            android:fontFamily="@font/quicksandregular"
             android:text="BO"
             android:textColor="@color/black"
             android:textScaleX="3"
-            android:fontFamily="@font/quicksandregular"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksandregular"
             android:text="TIkA"
             android:textColor="@color/black"
             android:textScaleX="1.9"
-            android:fontFamily="@font/quicksandregular"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -60,9 +60,12 @@
             android:layout_height="45sp"
             android:layout_marginLeft="32sp"
             android:layout_marginRight="32sp"
-            android:fontFamily="@font/quicksandregular"
             android:background="@drawable/round_rectangle_with_border"
-            android:padding="8sp" />
+            android:fontFamily="@font/quicksandregular"
+            android:paddingBottom="8sp"
+            android:paddingLeft="16sp"
+            android:paddingRight="16sp"
+            android:paddingTop="8sp" />
 
 
         <android.support.v7.widget.AppCompatEditText
@@ -70,33 +73,37 @@
             android:layout_width="match_parent"
             android:layout_height="45sp"
             android:layout_marginLeft="32sp"
-            android:fontFamily="@font/quicksandregular"
             android:layout_marginRight="32sp"
             android:layout_marginTop="8sp"
             android:background="@drawable/round_rectangle_with_border"
+            android:fontFamily="@font/quicksandregular"
             android:inputType="textPassword"
-            android:padding="8sp" />
+            android:paddingBottom="8sp"
+            android:paddingLeft="16sp"
+            android:paddingRight="16sp"
+            android:paddingTop="8sp" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:layout_marginTop="16sp"
             android:layout_marginLeft="86sp"
             android:layout_marginRight="86sp"
-            android:fontFamily="@font/quicksandregular"
+            android:layout_marginTop="16sp"
             android:background="@drawable/round_rectangle"
             android:backgroundTint="@color/black"
+            android:fontFamily="@font/quicksandregular"
             android:text="Log in"
             android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/txtSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="6sp"
             android:layout_marginTop="12sp"
             android:fontFamily="@font/quicksandregular"
+            android:gravity="center"
+            android:padding="6sp"
             android:text="@string/sign_up"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
@@ -119,9 +126,9 @@
             android:layout_marginTop="20sp"
             android:fontFamily="@font/quicksandregular"
             android:gravity="center"
-            android:textColor="@color/colorPrimaryLight"
             android:padding="6sp"
             android:text="Or, you can sign with"
+            android:textColor="@color/colorPrimaryLight"
             android:textSize="14sp" />
 
         <LinearLayout
@@ -134,24 +141,24 @@
                 android:id="@+id/imgFacebook"
                 android:layout_width="48sp"
                 android:layout_height="48sp"
-                android:tint="@color/black"
-                android:src="@drawable/facebook" />
+                android:src="@drawable/facebook"
+                android:tint="@color/black" />
 
             <ImageView
                 android:id="@+id/imgTwitter"
                 android:layout_width="48sp"
                 android:layout_height="48sp"
                 android:layout_marginLeft="8sp"
-                android:tint="@color/black"
-                android:src="@drawable/twitter" />
+                android:src="@drawable/twitter"
+                android:tint="@color/black" />
 
             <ImageView
                 android:id="@+id/imgGoogle"
                 android:layout_width="48sp"
                 android:layout_height="48sp"
-                android:tint="@color/black"
                 android:layout_marginLeft="8sp"
-                android:src="@drawable/google" />
+                android:src="@drawable/google"
+                android:tint="@color/black" />
         </LinearLayout>
 
         <!--<TextView-->

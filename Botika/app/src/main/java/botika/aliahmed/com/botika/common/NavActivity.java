@@ -10,10 +10,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.pixplicity.easyprefs.library.Prefs;
 import com.squareup.picasso.Target;
 
+import org.w3c.dom.Text;
+
 import botika.aliahmed.com.botika.R;
+import botika.aliahmed.com.botika.activities.LoginActivity;
+import botika.aliahmed.com.botika.utility.ConstName;
 
 public class NavActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
@@ -21,6 +27,8 @@ public class NavActivity extends BaseActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
+    private LinearLayout layoutLogOut;
+    private TextView txtUserName;
     Toolbar toolbar;
     private Target mTarget;
 
@@ -33,6 +41,17 @@ public class NavActivity extends BaseActivity {
         mTitle = mDrawerTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_drawer_menu);
         mDrawer = (LinearLayout) findViewById(R.id.left_drawer);
+        layoutLogOut = (LinearLayout) findViewById(R.id.layoutLogOut);
+        txtUserName = (TextView) findViewById(R.id.txtUserName);
+        txtUserName.setText(Prefs.getString(ConstName.USER_NAME, ""));
+
+        layoutLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Prefs.clear();
+                gotoNewActivity(LoginActivity.class);
+            }
+        });
 
         if (toolbar != null) {
             this.toolbar = toolbar;

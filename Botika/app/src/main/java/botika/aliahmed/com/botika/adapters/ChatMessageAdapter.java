@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -99,7 +100,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         final ChatMessageAdapter.BotChoiceViewHolder chatMessageHolder = (ChatMessageAdapter.BotChoiceViewHolder) holder;
         final ChatMessageModel chatMessageModel = getItem(position);
         if (chatMessageModel != null) {
-            chatMessageHolder.bind(chatMessageModel);
+            chatMessageHolder.bind(chatMessageModel, holder);
         }
     }
 
@@ -226,19 +227,26 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             itemView.setOnClickListener(this);
         }
 
-        private void bind(ChatMessageModel chatMessageModel) {
+        private void bind(ChatMessageModel chatMessageModel, final RecyclerView.ViewHolder viewHolder) {
             if (!TextUtils.isEmpty(chatMessageModel.getBotChoiceHeading()))
                 txtChoiceHeader.setText(chatMessageModel.getBotChoiceHeading());
-            int adapterPosition = getAdapterPosition();
             imgSenderImage.setImageResource(R.drawable.bot_image);
-            BotChoiceOptionAdapter botChoiceOptionAdapter = new BotChoiceOptionAdapter(chatMessageModel.getBotOptions());
+            final BotChoiceOptionAdapter botChoiceOptionAdapter = new BotChoiceOptionAdapter(chatMessageModel.getBotOptions());
             rvBotOptions.setLayoutManager(new LinearLayoutManager(context));
             rvBotOptions.setAdapter(botChoiceOptionAdapter);
 
             botChoiceOptionAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
-                    chatMessageClickListener.onClick(itemView, getAdapterPosition());
+                    if (botChoiceOptionAdapter.getData().get(position).isEnabled()) {
+                        if (position == 3) {
+                            chatMessageClickListener.onClick(itemView, getAdapterPosition(), position);
+                        } else {
+                            chatMessageClickListener.onClick(itemView, getAdapterPosition());
+                        }
+                    } else {
+                        Toast.makeText(context, "Option is not available right now.", Toast.LENGTH_LONG).show();
+                    }
                 }
             });
         }
@@ -268,7 +276,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
         private void bind(ChatMessageModel chatMessageModel) {
-            BotCollectionAdapter botChoiceOptionAdapter = new BotCollectionAdapter(chatMessageModel.getPhotoLink());
+            BotCollectionAdapter botChoiceOptionAdapter = new BotCollectionAdapter(chatMessageModel.getPhotoLink(), chatMessageModel.isOptionVisible(), chatMessageModel.getHeadersCollections());
             rvBotCollection.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
             rvBotCollection.setAdapter(botChoiceOptionAdapter);
 
@@ -301,7 +309,6 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             imgSenderImage.setImageResource(R.drawable.bot_image);
         }
     }
-
 
     @Override
     public int getItemViewType(int position) {
